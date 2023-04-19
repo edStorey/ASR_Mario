@@ -47,6 +47,8 @@ def ASR_Keyboard(audio) :
 
     if 'long' in command  :
         t = 1
+    elif 'small' in command :
+        t = 0.25
     elif 'hold' in command :
         t = -1
     else :
