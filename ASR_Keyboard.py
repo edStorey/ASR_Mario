@@ -50,7 +50,7 @@ def ASR_Keyboard(audio) :
     elif 'hold' in command :
         t = -1
     else :
-        t  = 0.25
+        t  = 0.5
 
     if 'hold' not in command :
         
