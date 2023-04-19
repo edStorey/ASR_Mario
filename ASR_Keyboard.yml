@@ -32,7 +32,6 @@ dependencies:
       - idna==3.4
       - pyaes==1.6.1
       - pyaudio==0.2.13
-      - pykeyboard==0.1.5
       - pyrogram==2.0.103
       - pysocks==1.7.1
       - python-xlib==0.33
