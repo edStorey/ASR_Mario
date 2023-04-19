@@ -19,7 +19,7 @@ def main() :
                     print("Speak Command:")
                     audio_comm = recognizer.listen(src, phrase_time_limit = 1.5)
                     speech_to_comm = recognizer.recognize_google(audio_comm).lower()
-                    print('\nCommand:\n' + speech_to_txt + '\n')
+                    print('\nCommand:\n' + speech_to_comm + '\n')
                     ASR_Keyboard(speech_to_comm)
                 #release_all() 
             except Exception as ex:
