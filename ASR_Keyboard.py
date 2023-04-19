@@ -12,7 +12,7 @@ def main() :
                 #audio = recognizer.adjust_for_ambient_noise(src)
                 #print("Threshold Value After calibration:" + str(recognizer.energy_threshold))
                 print("Please speak:")
-                audio = recognizer.listen(src, timeout=0.1, phrase_time_limit = 0.5)
+                audio = recognizer.listen(src, timeout=0.1, phrase_time_limit = 1)
                 speech_to_txt = recognizer.recognize_google(audio).lower()
                 print('\n' + speech_to_txt + '\n')
                 if 'mario' in speech_to_txt :
