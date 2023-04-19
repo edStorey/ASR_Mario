@@ -12,10 +12,14 @@ def main() :
                 #audio = recognizer.adjust_for_ambient_noise(src)
                 #print("Threshold Value After calibration:" + str(recognizer.energy_threshold))
                 print("Please speak:")
-                audio = recognizer.listen(src, timeout=0.1, phrase_time_limit = 1.5)
+                audio = recognizer.listen(src, timeout=0.1, phrase_time_limit = 0.5)
                 speech_to_txt = recognizer.recognize_google(audio).lower()
                 print('\n' + speech_to_txt + '\n')
-                ASR_Keyboard(speech_to_txt)
+                if 'mario' in speech_to_txt :
+                    audio_comm = recognizer.listen(src, phrase_time_limit = 1.5)
+                    speech_to_comm = recognizer.recognize_google(audio_comm).lower()
+                    print('\nCommand:\n' + speech_to_txt + '\n')
+                    ASR_Keyboard(speech_to_comm)
                 #release_all() 
             except Exception as ex:
                 print("Sorry. Could not understand.")
@@ -26,20 +30,12 @@ def ASR_Keyboard(command) :
     k = PyKeyboard()
     
 
-    if 'mario' in command.lower(): 
-        multi_com = True
-        command = command[command.lower().find('mario'):len(command)].split()
-        for i in range(len(command)) : 
-            if 'upright' in command[i].lower() :
-                command[i] = 'up'
-                command.insert(i + 1, 'right')
-                x = 0
-
-    else :
-        multi_com
-        first = command
-
-    x = 0
+    
+    command = command[command.lower().find('mario'):len(command)].split()
+    for i in range(len(command)) : 
+        if 'upright' in command[i].lower() :
+            command[i] = 'up'
+            command.insert(i + 1, 'right')
 
     for c in command :
         comm_list = c.lower()
