@@ -1,0 +1,12 @@
+"Mario"        -- Must be said to start command i.e. "Mario Jump Long"
+"Up" or "Jump" -- press up
+"Down"         -- press down
+"Right"        -- press right
+"Left"         -- press left
+"Fire"         -- press ctrl (ctrl used to fire fireballs)
+"Hop"          -- rapid fire up
+"Machine"      -- rapid fire ctrl
+"Long"         -- extends duration of button press to 1 second (default 0.25)
+"Hold"         -- Does not release last command until another command has been issued 
+"Stop"         -- Clears all previous button presses 
+
