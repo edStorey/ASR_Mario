@@ -11,11 +11,12 @@ def main() :
             try:
                 #audio = recognizer.adjust_for_ambient_noise(src)
                 #print("Threshold Value After calibration:" + str(recognizer.energy_threshold))
-                print("Please speak:")
+                print("Say \"Mario\" to begin:")
                 audio = recognizer.listen(src, timeout=0.1, phrase_time_limit = 1)
                 speech_to_txt = recognizer.recognize_google(audio).lower()
                 print('\n' + speech_to_txt + '\n')
                 if 'mario' in speech_to_txt :
+                    print("Speak Command:")
                     audio_comm = recognizer.listen(src, phrase_time_limit = 1.5)
                     speech_to_comm = recognizer.recognize_google(audio_comm).lower()
                     print('\nCommand:\n' + speech_to_txt + '\n')
