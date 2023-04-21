@@ -33,7 +33,7 @@ def ASR_Keyboard(audio) :
     punctuation= '''!()-[];:'"\,<>./?@#$%^&*_~'''
 
     
-    #command = command[command.lower().find('mario'):len(command)].split()
+    command = audio[audio.lower().find('mario'):len(audio)].split()
     command = audio.split()
     command = command[1:]
     for i in range(len(command)) : 
