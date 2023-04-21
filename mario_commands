@@ -6,7 +6,8 @@
 "Fire"         -- press ctrl (ctrl used to fire fireballs)
 "Hop"          -- fires up 5 times
 "Machine"      -- rapid fire ctrl
-"Long"         -- extends duration of button press to 1 second (default 0.25)
+"Long"         -- extends duration of button press to 1 second (default 0.5)
+"Short"        -- shorten the duration of button press to 0.25 seconds (default 0.5)
 "Hold"         -- Does not release last command until another command has been issued 
 "Stop"         -- Clears all previous button presses 
 
