@@ -7,8 +7,8 @@ import time
 def main() :
     recognizer = speech_recognition.Recognizer()
     while True :
-        #with speech_recognition.Microphone() as src:
-            #try:
+        with speech_recognition.Microphone() as src:
+            try:
                 #audio = recognizer.adjust_for_ambient_noise(src)
                 #print("Threshold Value After calibration:" + str(recognizer.energy_threshold))
                 print("Say \"Mario\" to begin:")
@@ -23,8 +23,8 @@ def main() :
                     #print('\nCommand:\n' + speech_to_comm + '\n')
                     ASR_Keyboard(speech_to_txt)
                 #release_all() 
-            #except Exception as ex:
-           #     print("Sorry. Could not understand.")
+            except Exception as ex:
+                print("Sorry. Could not understand.")
 
 
 
