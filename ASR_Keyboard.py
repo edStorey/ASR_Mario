@@ -128,7 +128,7 @@ def release_all() :
 
 def write_right(command) :
     command = command.lower()
-    if 'wright' in command  or 'rate' in command or 'rite' in command or 'ripe' in command:
+    if 'wright' in command  or 'rate' in command or 'rite' in command or 'ripe' in command or 'rice' in command or 'race' in command:
         command = 'right'
     elif command == 'lung' or command == 'along':
         command = 'long'
