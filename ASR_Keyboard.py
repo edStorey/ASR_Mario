@@ -7,13 +7,14 @@ import time
 def main() :
     recognizer = speech_recognition.Recognizer()
     while True :
-        with speech_recognition.Microphone() as src:
-            try:
+        #with speech_recognition.Microphone() as src:
+            #try:
                 #audio = recognizer.adjust_for_ambient_noise(src)
                 #print("Threshold Value After calibration:" + str(recognizer.energy_threshold))
                 print("Say \"Mario\" to begin:")
-                audio = recognizer.listen(src, timeout=1, phrase_time_limit = 3)
-                speech_to_txt = recognizer.recognize_google(audio).lower()
+                #audio = recognizer.listen(src, timeout=1, phrase_time_limit = 3)
+                #speech_to_txt = recognizer.recognize_google(audio).lower()
+                speech_to_txt = 'mario hop-right'
                 print('\n' + speech_to_txt + '\n')
                 if 'mario' in speech_to_txt :
                     #print("Speak Command:")
@@ -22,20 +23,21 @@ def main() :
                     #print('\nCommand:\n' + speech_to_comm + '\n')
                     ASR_Keyboard(speech_to_txt)
                 #release_all() 
-            except Exception as ex:
-                print("Sorry. Could not understand.")
+            #except Exception as ex:
+           #     print("Sorry. Could not understand.")
 
 
 
 def ASR_Keyboard(audio) :
     k = PyKeyboard()
     
-    punctuation= '''!()-[];:'"\,<>./?@#$%^&*_~'''
-
+    
+    audio = replace_punctuation(audio)
     
     command = audio[audio.lower().find('mario'):len(audio)].split()
     command = audio.split()
     command = command[1:]
+    
     for i in range(len(command)) : 
         if 'upright' in command[i].lower() :
             command[i] = 'up'
@@ -68,8 +70,6 @@ def ASR_Keyboard(audio) :
     if 'stop' in command :
         release_all() 
     for c in command :
-        for x in punctuation:
-            c=c.replace(x,' ')
         comm_list = c.lower()
         comm_list = write_right(comm_list)
         if  comm_list == 'hop' : 
@@ -88,14 +88,13 @@ def ASR_Keyboard(audio) :
                 k.press_key(k.control_key)
                 time.sleep(0.75)
                 release_all()
-        
+
+ # Takes command and executes as key
 def direction_keys(command, k, t) :
-    punctuation= '''!()-[];:'"\,<>./?@#$%^&*_~'''
     
     for c in command :
         
-        for x in punctuation:
-            c=c.replace(x,' ')
+        
         comm_list = c.lower()
         comm_list = write_right(comm_list)
         if comm_list == 'Mario' :
@@ -115,7 +114,7 @@ def direction_keys(command, k, t) :
     
 
 
-
+# Release all keys
 def release_all() :
     k = PyKeyboard()
     k.release_key('A')
@@ -125,7 +124,7 @@ def release_all() :
     k.release_key(k.left_key)
     k.release_key(k.control_key)
 
-
+# Corrects misheard commands
 def write_right(command) :
     command = command.lower()
     if 'wright' in command  or 'rate' in command or 'rite' in command or 'ripe' in command or 'rice' in command or 'race' in command:
@@ -140,15 +139,25 @@ def write_right(command) :
         command = command
     return command
 
+# implements long command
 def wait(time) :
     if time == 'long' :
        time.sleep(1)
        release_all() 
-    
-    
     else :
-       time.sleep(0.25)
+       time.sleep(0.5)
        release_all() 
+
+# removes unessecary punctuation
+def replace_punctuation(audio) :
+    punctuation= '''!()-[];:'"\,<>./?@#$%^&*_~'''
+
+    for c in audio :
+        for x in punctuation:
+                audio = audio.replace(x,' ')
+
+    return audio
+
 
 if __name__ == '__main__':
     main()
